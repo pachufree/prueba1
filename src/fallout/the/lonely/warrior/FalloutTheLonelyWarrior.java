@@ -7,7 +7,8 @@ package fallout.the.lonely.warrior;
 
 import javax.swing.JOptionPane;
 
-
+// DAMIAN, ESTO DEBERIA APARECERTE EN AZUL ,, AL COSTADO IZQUIERDO
+// O CELESTE ! O VERDE.. NOSE DE ALGUN COLOR!
 public class FalloutTheLonelyWarrior {
 
     /**

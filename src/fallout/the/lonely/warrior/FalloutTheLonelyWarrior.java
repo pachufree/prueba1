@@ -42,10 +42,8 @@ public class FalloutTheLonelyWarrior {
 //                estadis[1] += retorno[1];
 //                estadis[2] += retorno[2];
 
-                // Con esta sentencia if controlo que la salud no sea mayor a 100
-                if (estadis[0] > 100) {
-                    estadis[0] = 100;
-                }
+               
+               
 
                 // Muestro las estadísticas del personaje actualizadas
                 System.out.println("--------------------------");
@@ -76,7 +74,7 @@ public class FalloutTheLonelyWarrior {
     // Función yermo
     public static int[] yermo(int[] vector) {
         int num, horas, cont = 0;
-        boolean armaduraSi = false;
+        boolean armaduraSi = false, vidafull = true;
 
         horas = Integer.parseInt(JOptionPane.showInputDialog("¿Cuántas horas quieres estar en el yermo?"));
 
@@ -99,36 +97,69 @@ public class FalloutTheLonelyWarrior {
             num = (int) (Math.random() * (1 - 5) + 5);
 
             switch (num) {
+                // -----------------------DAÑO----------------------------
                 case 1:
                     int daño;
                     // Genera números entre 1 y 15 (numMínimo-numMáximo)+numMáximo
-                    daño = (int) (Math.random() * (1 - 15) + 15);
+                    daño = (int) (Math.random() * (5 - 25) + 25);
                     System.out.println("Sufres " + daño + " de daño");
-                    vector[0] -= daño;
+                    if (armaduraSi) {
+                        if (daño > vector[2]) {
+                            vector[0] -= daño - vector[2];
+                            vidafull = false;
+                            armaduraSi = false;
+                        } else {
+                            vector[2] -= daño;
+                        }
+                    } else {
+                        vector[0] -= daño;
+                        vidafull = false;
+                    }
+                    if (vector[2] == 0) {
+                        armaduraSi = false;
+                    }
                     break;
+                // -----------------------MONEDAS----------------------------
                 case 2:
                     int monedas;
                     // Genera números entra 1 y 25
-                    monedas = (int) (Math.random() * (1 - 25) + 25);
+                    monedas = (int) (Math.random() * (1 - 10) + 10);
                     System.out.println("Encuentras " + monedas + " monedas");
                     vector[1] += monedas;
                     break;
+                // -----------------------ARMADURA----------------------------
                 case 3:
-                    int armadura;
-                    // Genera números entre 1 y 15
-                    armadura = (int) (Math.random() * (1 - 15) + 15);
-                    System.out.println("Encuentras una armadura con " + armadura + " de protección");
-                    vector[2] += armadura;
+                    if (armaduraSi == false) {
+                        int armadura;
+                        // Genera números entre 1 y 15
+                        armadura = (int) (Math.random() * (1 - 15) + 15);
+                        System.out.println("Encuentras una armadura con " + armadura + " de protección");
+                        vector[2] += armadura;
+                        armaduraSi = true;
+                    }
                     break;
-                case 4:
-                    int pocion;
-                    // Genera números entre 1 y 15
-                    pocion = (int) (Math.random() * (1 - 15) + 15);
-                    System.out.println("Encuentras una poción con " + pocion + " de salud");
-                    //vector[0] += pocion;
-                    break;
-            }
 
+                // -----------------------POCIONES----------------------------
+                case 4:
+                    if (vidafull == false) {
+                        int pocion;
+                        // Genera números entre 1 y 15
+                        pocion = (int) (Math.random() * (1 - 8) + 8);
+                        System.out.println("Encuentras una poción con " + pocion + " de salud");
+                        vector[0] += pocion;
+                        if (vector[0] >= 100) {
+                            vidafull = true;
+                        }
+                    }
+                    break;
+
+            }
+             if (vector[0] > 100) {
+                    vector[0] = 100;
+                }
+                if (vector[2] < 0) {
+                    vector[2] = 0;
+                }
             // Esta porción de código "detiene" la ejecución del programa por cierto tiempo
             try {
                 Thread.sleep(3000);

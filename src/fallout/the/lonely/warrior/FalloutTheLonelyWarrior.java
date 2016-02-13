@@ -38,9 +38,9 @@ public class FalloutTheLonelyWarrior {
 
             do {
                 // Actualizo las estadísticas del personaje luego de la función yermo o de la función mercado
-                estadis[0] += retorno[0];
-                estadis[1] += retorno[1];
-                estadis[2] += retorno[2];
+//                estadis[0] += retorno[0];
+//                estadis[1] += retorno[1];
+//                estadis[2] += retorno[2];
 
                 // Con esta sentencia if controlo que la salud no sea mayor a 100
                 if (estadis[0] > 100) {
@@ -60,7 +60,7 @@ public class FalloutTheLonelyWarrior {
 
             switch (respMenu) {
                 case 1:
-                    retorno = yermo(estadis);
+                    estadis = yermo(estadis);
                     break;
                 case 2:
                     mercado();
@@ -76,6 +76,7 @@ public class FalloutTheLonelyWarrior {
     // Función yermo
     public static int[] yermo(int[] vector) {
         int num, horas, cont = 0;
+        boolean armaduraSi = false;
 
         horas = Integer.parseInt(JOptionPane.showInputDialog("¿Cuántas horas quieres estar en el yermo?"));
 
@@ -124,7 +125,7 @@ public class FalloutTheLonelyWarrior {
                     // Genera números entre 1 y 15
                     pocion = (int) (Math.random() * (1 - 15) + 15);
                     System.out.println("Encuentras una poción con " + pocion + " de salud");
-                    vector[0] += pocion;
+                    //vector[0] += pocion;
                     break;
             }
 

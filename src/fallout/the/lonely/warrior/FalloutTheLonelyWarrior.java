@@ -38,9 +38,7 @@ public class FalloutTheLonelyWarrior {
 
             do {
                 // Actualizo las estadísticas del personaje luego de la función yermo o de la función mercado
-//                estadis[0] += retorno[0];
-//                estadis[1] += retorno[1];
-//                estadis[2] += retorno[2];
+//               
 
                
                

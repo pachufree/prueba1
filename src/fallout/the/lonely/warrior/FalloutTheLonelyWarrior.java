@@ -7,8 +7,7 @@ package fallout.the.lonely.warrior;
 
 import javax.swing.JOptionPane;
 
-// DAMIAN, ESTO DEBERIA APARECERTE EN AZUL ,, AL COSTADO IZQUIERDO
-// O CELESTE ! O VERDE.. NOSE DE ALGUN COLOR!
+
 public class FalloutTheLonelyWarrior {
 
     /**
@@ -37,12 +36,6 @@ public class FalloutTheLonelyWarrior {
         while (respMenu != 3) {
 
             do {
-                // Actualizo las estadísticas del personaje luego de la función yermo o de la función mercado
-//               
-
-               
-               
-
                 // Muestro las estadísticas del personaje actualizadas
                 System.out.println("--------------------------");
                 System.out.println("ESTADÍSTICAS DEL PERSONAJE\n"
@@ -152,12 +145,12 @@ public class FalloutTheLonelyWarrior {
                     break;
 
             }
-             if (vector[0] > 100) {
-                    vector[0] = 100;
-                }
-                if (vector[2] < 0) {
-                    vector[2] = 0;
-                }
+            if (vector[0] > 100) {
+                vector[0] = 100;
+            }
+            if (vector[2] < 0) {
+                vector[2] = 0;
+            }
             // Esta porción de código "detiene" la ejecución del programa por cierto tiempo
             try {
                 Thread.sleep(3000);
